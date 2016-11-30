@@ -12,8 +12,8 @@
  -----------------------------------------------------------------------------*/
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef LED_MATRIX_H_
-#define LED_MATRIX_H_
+#ifndef MY_LED_MATRIX_H_
+#define MY_LED_MATRIX_H_
 
 /* global imports ------------------------------------------------------------*/
 #include <avr/io.h>
@@ -50,7 +50,7 @@
 #define toggleBit(reg, bit) (_SFR_BYTE(reg) ^= _BV(bit))
 #endif
 #ifndef getBit
-#define getBit(reg, bit) ((_SFR_BYTE(reg) & _BV(bit)) > 0)
+#define getBit(reg, bit) ((_SFR_BYTE(reg) & _BV(bit)) != 0)
 #endif
 
 /* exported variables --------------------------------------------------------*/
@@ -921,7 +921,7 @@ PROGMEM const byte characters[NUMBER_OF_DIFFERENT_CHARACTERS][FONTSIZE][FONTWIDT
   }
 };
 
-#endif /* LED_MATRIX_H_ */
+#endif /* MY_LED_MATRIX_H_ */
 
 /**
  * @}
