@@ -1,5 +1,5 @@
 /**-----------------------------------------------------------------------------
- * \file    MyLEDMatrix.h
+ * \file    LEDMatrix_old.h
  * \author  jh
  * \date    xx.05.2016
  *
@@ -12,8 +12,8 @@
  -----------------------------------------------------------------------------*/
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef MY_LED_MATRIX_H_
-#define MY_LED_MATRIX_H_
+#ifndef LED_MATRIX_OLD_H_
+#define LED_MATRIX_OLD_H_
 
 /* global imports ------------------------------------------------------------*/
 #include <avr/io.h>
@@ -921,7 +921,7 @@ PROGMEM const byte characters[NUMBER_OF_DIFFERENT_CHARACTERS][FONTSIZE][FONTWIDT
   }
 };
 
-#endif /* MY_LED_MATRIX_H_ */
+#endif
 
 /**
  * @}
