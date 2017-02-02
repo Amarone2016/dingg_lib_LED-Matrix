@@ -1,13 +1,7 @@
 /**-----------------------------------------------------------------------------
- * \file    led_matrix.c
+ * \file    MyLEDMatrix.cpp
  * \author  jh
  * \date    xx.05.2016
- *
- * \version 1.0
- *  create this file
- *
- * \brief   functions to control a LED-Matrix
- *
  * @{
  -----------------------------------------------------------------------------*/
 
