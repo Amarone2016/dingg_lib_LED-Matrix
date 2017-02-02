@@ -1,7 +1,7 @@
 /**-----------------------------------------------------------------------------
  * \file    LEDMatrix.h
  * \author  jh
- * \date    xx.01.2017
+ * \date    xx.02.2017
  *
  * \version 1.0
  *
@@ -9,8 +9,6 @@
  *
  * @{
  -----------------------------------------------------------------------------*/
-
-//TODO:
 
 /* Define to prevent recursive inclusion -----------------------*/
 #ifndef LEDMATRIX_H_
@@ -49,7 +47,6 @@ public:
   virtual void fillScreen(uint8_t brightness);
   virtual void clear();
   virtual void drawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t b);
-  virtual void drawFilledRectangle(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
 
   // non virtual methods  
   void movePixel(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
@@ -58,6 +55,7 @@ public:
   void drawHLine(uint8_t x, uint8_t y, uint8_t l, uint8_t b);
   void drawVLine(uint8_t x, uint8_t y, uint8_t h, uint8_t b);
   void drawRectangle(uint8_t x, uint8_t y, uint8_t l, uint8_t h, uint8_t b);
+  void drawFilledRectangle(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
   void drawCircle(uint8_t x0, uint8_t y0, uint8_t r, uint8_t b);
   void drawFilledCircle(uint8_t x0, uint8_t y0, uint8_t r, uint8_t b);
   void drawTriangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t b);

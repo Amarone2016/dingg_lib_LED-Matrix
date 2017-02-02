@@ -1,7 +1,7 @@
 /**-----------------------------------------------------------------------------
  * \file    LEDMatrix.cpp
  * \author  jh
- * \date    xx.01.2017
+ * \date    xx.02.2017
  *
  * @{
  -----------------------------------------------------------------------------*/
@@ -10,6 +10,13 @@
 #include "LEDMatrix.h"
 
 /* Public ----------------------------------------------------- */
+/** ===========================================================
+ * \fn      fillScreen
+ * \brief   fills the whole LED matrix
+ *
+ * \param   (byte) brightness value (0... MAX_BRIGHTNESS_VALUE)
+ * \return  -
+ ============================================================== */
 void LEDMatrix::fillScreen(uint8_t brightness)
 {
   for (uint8_t y = 0; y < y_; y++)
@@ -18,6 +25,10 @@ void LEDMatrix::fillScreen(uint8_t brightness)
   }
 }
 
+/** ===========================================================
+ * \fn      clear
+ * \brief   clears the whole LED matrix
+ ============================================================== */
 void LEDMatrix::clear()
 {
   fillScreen(0);
@@ -77,27 +88,6 @@ void LEDMatrix::drawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t
       py += s_dy;
       setPixel(px, py, b);
     }
-  }
-}
-
-/** ===========================================================
- * \fn      drawFilledRectangle
- * \brief   draws a filled rectangle on given coordinates and
- *          brightness
- *
- * \requ    drawHLine()
- *
- * \param   (byte) x, y top left coordinate of the rectangle
- *          (byte) length of the rectangle
- *          (byte) hight of the rectangle
- *          (byte) brightness value (0... MAX_BRIGHTNESS_VALUE)
- * \return  -
- ============================================================== */
-void LEDMatrix::drawFilledRectangle(uint8_t x, uint8_t y, uint8_t l, uint8_t h, uint8_t b)
-{
-  for (uint8_t i = y; i < y + h; i++)
-  {
-    drawHLine(x, i, l, b);
   }
 }
 
@@ -233,6 +223,27 @@ void LEDMatrix::drawRectangle(uint8_t x, uint8_t y, uint8_t l, uint8_t h, uint8_
   drawVLine(x, y, h, b);
   drawHLine(x, y + h - 1, l, b);
   drawVLine(x + l - 1, y, h, b);
+}
+
+/** ===========================================================
+ * \fn      drawFilledRectangle
+ * \brief   draws a filled rectangle on given coordinates and
+ *          brightness
+ *
+ * \requ    drawHLine()
+ *
+ * \param   (byte) x, y top left coordinate of the rectangle
+ *          (byte) length of the rectangle
+ *          (byte) hight of the rectangle
+ *          (byte) brightness value (0... MAX_BRIGHTNESS_VALUE)
+ * \return  -
+ ============================================================== */
+void LEDMatrix::drawFilledRectangle(uint8_t x, uint8_t y, uint8_t l, uint8_t h, uint8_t b)
+{
+  for (uint8_t i = y; i < y + h; i++)
+  {
+    drawHLine(x, i, l, b);
+  }
 }
 
 /** ===========================================================
