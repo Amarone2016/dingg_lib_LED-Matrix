@@ -17,22 +17,7 @@
  * \param   (byte) brightness value (0... MAX_BRIGHTNESS_VALUE)
  * \return  -
  ============================================================== */
-void LEDMatrix::fillScreen(uint8_t brightness)
-{
-  for (uint8_t y = 0; y < y_; y++)
-  {
-    for (uint8_t x = 0; x < x_; x++) drawPixel(x, y, brightness);
-  }
-}
 
-/** ===========================================================
- * \fn      clear
- * \brief   clears the whole LED matrix
- ============================================================== */
-void LEDMatrix::clear()
-{
-  fillScreen(0);
-}
 
 /** ===========================================================
  * \fn      drawLine
@@ -454,7 +439,7 @@ void LEDMatrix::drawFilledTriangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y
       py += s_dy;
       drawLine(x0, y0, px, py, b);
     }
-  } 
+  }
 }
 
 /** ===========================================================
@@ -475,7 +460,7 @@ void LEDMatrix::drawPicture(uint8_t x0, uint8_t y0, uint8_t l, uint8_t h, const 
 
   for (uint8_t y = y0; y < y0 + h; y++)
   {
-    for (uint8_t x = x0; x < x0 + l; x++) 
+    for (uint8_t x = x0; x < x0 + l; x++)
     {
       setPixel(x, y, pgm_read_byte(&image[x+y*LED_MATRIX_PICTURE_X]));
     }
@@ -517,9 +502,9 @@ void LEDMatrix::drawChar(uint8_t x, uint8_t y, char c, uint8_t b)
  * \return  -
  ============================================================== */
 void LEDMatrix::drawString(uint8_t x, uint8_t y, const char *str, uint8_t b)
-{  
+{
   uint8_t ofCnt = 0;  // overflow counter
-  
+
   for (uint16_t i = 0; str[i] != '\0'; i++)
   {
     uint8_t currentX = x + i * (LED_MATRIX_FONTWIDTH + CHAR_SPACING_OFFSET);
@@ -585,7 +570,7 @@ void LEDMatrix::rotateContentCW()
   {
     uint8_t x;
     for (x = 0 ; x < y_ / 2; x++)  // 0... 10
-    { 
+    {
       pixelA = getPixel(x, y);
 
       currentX = maxXY - y;
@@ -617,7 +602,7 @@ void LEDMatrix::rotateContentCW()
 
       pixelA = getPixel(currentX, currentY);  // 0,0; 1,0; ...
       setPixel(currentX, currentY, pixelB);
-    }  
+    }
   }
 }
 
@@ -640,7 +625,7 @@ void LEDMatrix::rotateContentACW()
   {
     uint8_t x;
     for (x = 0 ; x < y_ / 2; x++)  // 0... 10
-    { 
+    {
       pixelA = getPixel(x, y);
 
       currentX = y;
@@ -672,7 +657,7 @@ void LEDMatrix::rotateContentACW()
 
       pixelA = getPixel(currentX, currentY);  // 0,0; 1,0; ...
       setPixel(currentX, currentY, pixelB);
-    }  
+    }
   }
 }
 

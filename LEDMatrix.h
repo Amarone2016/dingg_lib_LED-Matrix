@@ -38,7 +38,7 @@ public:
 
   /* public methods */
   // MUST be defined by the subclass
-  virtual void drawPixel(uint8_t x, uint8_t y, uint8_t brightness);  
+  virtual void drawPixel(uint8_t x, uint8_t y, uint8_t brightness);
   virtual uint8_t getPixel(uint8_t x, uint8_t y);
 
   // CAN be defined by the subclass
@@ -46,7 +46,7 @@ public:
   virtual void clear();
   virtual void drawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t b);
 
-  // non virtual methods  
+  // non virtual methods
   void movePixel(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
   void animatePixel(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint16_t stepInMillis);
 
