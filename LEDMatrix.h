@@ -500,11 +500,11 @@ PROGMEM const uint8_t characters[NUMBER_OF_DIFFERENT_CHARACTERS][LED_MATRIX_FONT
     {1, 1, 0}
   },
   {  // 'C'
-    {1, 1, 1},
+    {0, 1, 1},
     {1, 0, 0},
     {1, 0, 0},
     {1, 0, 0},
-    {1, 1, 1}
+    {0, 1, 1}
   },
   {  // 'D'
     {1, 1, 0},
@@ -724,8 +724,8 @@ PROGMEM const uint8_t characters[NUMBER_OF_DIFFERENT_CHARACTERS][LED_MATRIX_FONT
     {1, 1, 0}
   },
   {  // 'c'
+    {0, 0, 0},
     {0, 1, 1},
-    {1, 0, 0},
     {1, 0, 0},
     {1, 0, 0},
     {0, 1, 1}
@@ -740,7 +740,7 @@ PROGMEM const uint8_t characters[NUMBER_OF_DIFFERENT_CHARACTERS][LED_MATRIX_FONT
   {  // 'e'
     {0, 1, 0},
     {1, 0, 1},
-    {1, 1, 0},
+    {1, 1, 1},
     {1, 0, 0},
     {0, 1, 1}
   },
@@ -854,7 +854,7 @@ PROGMEM const uint8_t characters[NUMBER_OF_DIFFERENT_CHARACTERS][LED_MATRIX_FONT
     {1, 0, 1},
     {1, 0, 1},
     {1, 0, 1},
-    {0, 1, 0}
+    {1, 1, 1}
   },
   {  // 'v'
     {0, 0, 0},
