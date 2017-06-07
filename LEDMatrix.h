@@ -1,54 +1,37 @@
-/**-----------------------------------------------------------------------------
- * \file    LEDMatrix.h
- * \author  jh
- * \date    xx.02.2017
- *
- * \version 1.0
- *
- * \brief   LED matrix class with basic methods to draw something
- *
- * @{
- -----------------------------------------------------------------------------*/
+#ifndef _LEDMATRIX_H_
+#define _LEDMATRIX_H_
+/*******************************************************************************
+* \file    LEDMatrix.h
+********************************************************************************
+* \author  Jascha Haldemann jh@oxon.ch
+* \date    01.02.2017
+* \version 1.0
+*
+* \brief   LED matrix class with basic functions to draw something
+*
+********************************************************************************
+* LEDMatrix Library
+*******************************************************************************/
 
-/* Define to prevent recursive inclusion -----------------------*/
-#ifndef LEDMATRIX_H_
-#define LEDMATRIX_H_
-
-/* Includes --------------------------------------------------- */
+/* ============================== Global imports ============================ */
 #include <Arduino.h>
 #include <avr/pgmspace.h>
 
-/* Typedefs ----------------------------------------------------*/
-/* Macros ----------------------------------------------------- */
-/* Defines -----------------------------------------------------*/
+/* ==================== Global module constant declaration ================== */
 
-/* Class ------------------------------------------------------ */
+/* ========================= Global macro declaration ======================= */
+
+/* ============================ Class declaration =========================== */
 class LEDMatrix
 {
 public:
-  /* constructor(s) & deconstructor */
+  /* Constructor(s) and  Destructor */
   LEDMatrix(uint8_t x, uint8_t y) : x_(x), y_(y) {};
   ~LEDMatrix() {};
 
-  /* public constants (static) */
-  // ...
-
-  /* public enumerations */
-  // ...
-
-  /* public methods */
-  // MUST be defined by the subclass
-  virtual void drawPixel(uint8_t x, uint8_t y, uint8_t brightness);
-  virtual uint8_t getPixel(uint8_t x, uint8_t y);
-
-  // CAN be defined by the subclass
-  virtual void fillScreen(uint8_t brightness);
-  virtual void clear();
-  virtual void drawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t b);
-
-  // non virtual methods
+  /* Public member functions */
   void movePixel(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
-  void animatePixel(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint16_t stepInMillis);
+  void animatePixel(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint16_t stepSpeed);
 
   void drawHLine(uint8_t x, uint8_t y, uint8_t l, uint8_t b);
   void drawVLine(uint8_t x, uint8_t y, uint8_t h, uint8_t b);
@@ -63,33 +46,41 @@ public:
 
   void drawChar(uint8_t x, uint8_t y, char c, uint8_t b);
   void drawString(uint8_t x, uint8_t y, const char *str, uint8_t b);
-  void runningText(uint8_t x, uint8_t y, const char* str, uint8_t b, uint16_t stepInMillis);
+  void runningText(uint8_t x, uint8_t y, const char* str, uint8_t b, uint16_t stepSpeed);
 
   void rotateContentCW();
   void rotateContentACW();
 
-protected:
-  /* attributes */
-  uint8_t x_;
-  uint8_t y_;
+  /* Public virtual functions */
+  // MUST be defined by the subclass
+  virtual void drawPixel(uint8_t x, uint8_t y, uint8_t brightness);
+  virtual uint8_t getPixel(uint8_t x, uint8_t y);
 
-  /* private constants (static) */
-  //static const uint8_t MAX_BRIGHTNESS_VALUE = 255;
+  // CAN be defined by the subclass
+  virtual void fillScreen(uint8_t b);
+  virtual void clear();
+  virtual void drawLine(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t b);
+
+protected:
+  /* Protected constant declerations (static) */
+  static const uint8_t MAX_BRIGHTNESS_VALUE = 255;
   static const uint8_t CHAR_SPACING_OFFSET = 1;
   static const uint8_t ASCII_FIRST_CHARACTER_OFFSET = 32;
 
-  /* private variables */
-  // ...
+  /* Protected member data */
+  uint8_t x_;
+  uint8_t y_;
 
-  /* private methods */
+  /* Protected member functions */
   void setPixel(uint8_t x, uint8_t y, uint8_t brightness) {drawPixel(x, y, brightness);}
   void clearPixel(uint8_t x, uint8_t y) {drawPixel(x, y, 0);}
-  void swap(uint8_t *a, uint8_t *b) {uint8_t temp = *a; *a = *b; *b = temp;}
-  int8_t sgn(int16_t a) {if (a > 0) return 1; if (a < 0) return -1; return 0;}
 
+  /* Protected class functions (static) */
+  static void swap(uint8_t *a, uint8_t *b) {uint8_t temp = *a; *a = *b; *b = temp;}
+  static int8_t sgn(int16_t a) {if (a > 0) return 1; if (a < 0) return -1; return 0;}
 };
 
-/* Pictures -----------------------------------------------------*/
+/* Pictures ----------------------------------------------------------------- */
 #define LED_MATRIX_PICTURE_X             8
 #define LED_MATRIX_PICTURE_Y             8
 #define LED_MATRIX_FONTSIZE              5
@@ -251,7 +242,7 @@ PROGMEM const uint8_t picture10[LED_MATRIX_PICTURE_X*LED_MATRIX_PICTURE_Y] =
   0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF   // row 7
 };
 
-/* Simple Font --------------------------------------------------*/
+/* Simple Font -------------------------------------------------------------- */
 PROGMEM const uint8_t characters[NUMBER_OF_DIFFERENT_CHARACTERS][LED_MATRIX_FONTSIZE][LED_MATRIX_FONTWIDTH] =
 {
   {  // ' '
@@ -922,7 +913,3 @@ PROGMEM const uint8_t characters[NUMBER_OF_DIFFERENT_CHARACTERS][LED_MATRIX_FONT
 };
 
 #endif
-
-/**
- * @}
- */
